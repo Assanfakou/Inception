@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Component Test Page</title>
+    <style>
+        /* Minimal styling to make the test page readable */
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #f4f4f9;
+        }
+        section {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        code {
+            background: #eee;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+        }
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .btn-primary { background: #007bff; color: white; }
+        .btn-secondary { background: #6c757d; color: white; }
+        table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #f8f9fa; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Website Test Laboratory</h1>
+        <p>Use this page to verify your CSS, responsiveness, and element behavior.</p>
+    </header>
+
+    <hr>
+
+    <section id="typography">
+        <h2>1. Typography</h2>
+        <h1>Heading 1 (H1)</h1>
+        <h2>Heading 2 (H2)</h2>
+        <h3>Heading 3 (H3)</h3>
+        <p>This is a standard paragraph. It includes <strong>bold text</strong>, <em>italicized text</em>, and a <a href="#">hyperlink</a>. Testing long strings of text helps check for line-height and readability.</p>
+        <blockquote>
+            "This is a blockquote element for highlighting testimonials or important excerpts."
+        </blockquote>
+    </section>
+
+    <section id="buttons">
+        <h2>2. Buttons & Actions</h2>
+        <button class="btn btn-primary">Primary Button</button>
+        <button class="btn btn-secondary">Secondary Button</button>
+        <button class="btn" disabled>Disabled Button</button>
+        <p>Hover over these to test your <code>:hover</code> and <code>:active</code> states.</p>
+    </section>
+
+    <section id="forms">
+        <h2>3. Form Elements</h2>
+        <form onsubmit="alert('Form submitted!'); return false;">
+            <div style="margin-bottom: 15px;">
+                <label for="name">Full Name:</label><br>
+                <input type="text" id="name" placeholder="John Doe" style="width: 100%; padding: 8px; margin-top: 5px;">
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label for="email">Email Address:</label><br>
+                <input type="email" id="email" placeholder="test@example.com" style="width: 100%; padding: 8px; margin-top: 5px;">
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label><input type="checkbox"> I agree to the terms</label>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <input type="radio" name="choice" id="r1"> <label for="r1">Option A</label>
+                <input type="radio" name="choice" id="r2"> <label for="r2">Option B</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Form</button>
+        </form>
+    </section>
+
+    <section id="tables">
+        <h2>4. Data Table</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Feature</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>001</td>
+                    <td>Navigation Bar</td>
+                    <td style="color: green;">✔ Ready</td>
+                </tr>
+                <tr>
+                    <td>002</td>
+                    <td>Footer Links</td>
+                    <td style="color: orange;">⚠ Pending</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="media">
+        <h2>5. Media</h2>
+        <p>Testing a responsive image placeholder:</p>
+        <img src="https://via.placeholder.com/600x300" alt="Placeholder" style="max-width: 100%; height: auto; border-radius: 4px;">
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Test Page Layout | <a href="#">Back to top</a></p>
+    </footer>
+
+</body>
+</html>
