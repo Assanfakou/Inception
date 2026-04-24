@@ -4,4 +4,5 @@ services:
   web:
     build: .
     container_name: db
+    env_file: ".env"
     restart: unless-stopped
