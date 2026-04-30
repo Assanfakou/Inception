@@ -1,6 +1,6 @@
 services:
   mariadb:
-    build: mariadb/
+    build: requirements/mariadb/
     container_name: mariadb
     restart: always
     env_file: .env
@@ -10,7 +10,7 @@ services:
       - inception
 
   wordpress:
-    build: wordpress/
+    build: requirements/wordpress/
     container_name: wordpress
     restart: always
     depends_on:
@@ -22,7 +22,7 @@ services:
       - inception
 
   nginx:
-    build: nginx/
+    build: requirements/nginx/
     container_name: nginx
     restart: always
     depends_on:

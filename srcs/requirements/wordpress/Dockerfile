@@ -31,7 +31,7 @@ RUN sed -i 's|/run/php/php.*-fpm.sock|0.0.0.0:9000|' \
     /etc/php/*/fpm/pool.d/www.conf
 
 # Copy setup script (IMPORTANT)
-COPY setup.sh /setup.sh
+COPY tools/setup.sh /setup.sh
 RUN chmod +x /setup.sh
 
 RUN chown -R www-data:www-data /var/www/html
