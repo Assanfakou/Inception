@@ -27,7 +27,7 @@ fi
 if ! wp core is-installed --allow-root; then
     echo "Installing WordPress..."
     wp core install \
-        --url="https://localhost" \
+        --url="https://hfakou.42.fr" \
         --title="Inception" \
         --admin_user="$WP_ADMIN_USER" \
         --admin_password="$WP_ADMIN_PASSWORD" \
@@ -37,4 +37,4 @@ fi
 
 echo "Starting PHP-FPM..."
 
-exec php-fpm -F
+exec php-fpm8.2 -F

@@ -9,6 +9,7 @@ RUN apt update && apt install -y \
     mariadb-client
 
 # Install WP-CLI
+#wp-cli is a command line that let's us install wordpress without using browser
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
     && chmod +x wp-cli.phar \
     && mv wp-cli.phar /usr/local/bin/wp
@@ -21,7 +22,8 @@ RUN wget https://wordpress.org/latest.tar.gz && \
     mv wordpress/* . && \
     rm -rf wordpress latest.tar.gz
 
-# PHP-FPM runtime dir
+# PHP-FPM runtime dir 
+# php-fpm needs a folder wher to store it's runtime files.
 RUN mkdir -p /run/php && chown -R www-data:www-data /run/php
 
 # Listen on port 9000
