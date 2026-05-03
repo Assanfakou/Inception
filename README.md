@@ -3,6 +3,7 @@
         1- advanced process managemnent with stop/start.
         2- configure the stdout or stderr of the loggin.
         2- emergency of restart in case of accidental cash destraction.
+
 ### the instalation in wordpress
     1-`php-fpm` runs php (the engin that processes the wordpress code).
     2-`php-mysql` the bridge that lets php talk to mariadb database.
@@ -26,6 +27,7 @@
 
 ## docker file or compose comands or syntax
     1-`WORKDIR`: this comand after will be executed in this folder after that syntax.
+
 ## nginx Dockerfile commands
     cerrificates cmands;
     1- `openssl req` create a certificate request.
@@ -39,3 +41,20 @@
     7-`out` save the certificate in path.
     8-`subj` identity info inside the certificate .
     so nginx used this certificate to enable HTTPS.
+
+## what is happenig
+    The user sends a request to nginx over HTTPS.
+    nginx handles SSL certificate and forwards the PHP request to
+    PHP-FPM using FastCGI.
+    PHP-FPM executes the wordpress PHP code.
+    Wordpress interact with mariadb to recieve or store data.
+    The response is sent back through PHP-FPM to nginx to the browser.
+## Tools that is been used
+    - I used PHP-FPM instead of APACHE because of esolation,
+     APACHE handles HTTP and php together.
+    - volumes used to store data even when the container is topped or rebuilded
+    the data is still there outside the container.
+    - docker networking allows container to communicate by contianer names not ip's.
+    - wp-cli is used for automation wordpress instalation and avoid manual configuration.
+    - PHP-FPM listens in port 9000 for FastCGI
+   
