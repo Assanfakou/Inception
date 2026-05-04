@@ -42,6 +42,20 @@
     8-`subj` identity info inside the certificate .
     so nginx used this certificate to enable HTTPS.
 
+
+## nginx config file synthax
+        `ssl_protocols TLSv1.2 TLSv1.3;`
+    - TLS Protocols : (Transport layer security) is a protocol that encrypt communication
+        between browser and server. it what makes `https://` secure than `http://` 
+         without it, anyone in the network could read data in the same network .
+        - Diff between `TLSv1.2 and TLSV1.3` 
+             `TLSv1.2` the handshake takes 2 rounds trips between browser and server before
+                 data flows.
+              support some older browsers.
+              `TLSv1.3` the handshake is faster and takes only one round.
+                encrypt the handshake itself .considered the gold standard today.
+
+
 ## what is happenig
     The user sends a request to nginx over HTTPS.
     nginx handles SSL certificate and forwards the PHP request to
@@ -57,4 +71,4 @@
     - docker networking allows container to communicate by contianer names not ip's.
     - wp-cli is used for automation wordpress instalation and avoid manual configuration.
     - PHP-FPM listens in port 9000 for FastCGI
-   
+ 
