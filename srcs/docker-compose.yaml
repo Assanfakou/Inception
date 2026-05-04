@@ -5,9 +5,7 @@ services:
     restart: on-failure
     env_file: .env
     volumes:
-      - type: bind
-        source: /home/hfakou/data/mariadb
-        target: /var/lib/mysql
+      - mariadb-data:/var/lib/mysql
     networks:
       - inception
 
@@ -19,9 +17,7 @@ services:
       - mariadb
     env_file: .env
     volumes:
-      - type: bind
-        source: /home/hfakou/data/wordpress
-        target: /var/www/html
+      - wordpress-data:/var/www/html
     networks:
       - inception
 
@@ -34,11 +30,22 @@ services:
     ports:
       - "443:443"
     volumes:
-      - type: bind
-        source: /home/hfakou/data/wordpress
-        target: /var/www/html
+      - wordpress-data:/var/www/html
     networks:
       - inception
 
+volumes:
+    mariadb-data:
+      driver: local
+      driver_opts:
+        type: non
+        o: bind
+        device: /home/hfakou/data/mariadb
+    wordpress-data:
+      driver: local
+      driver_opts:
+        type: non
+        o: bind
+        device: /home/hfakou/data/wordpress
 networks:
   inception:
