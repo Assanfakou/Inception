@@ -56,6 +56,18 @@
                 encrypt the handshake itself .considered the gold standard today.
 
 
+## wordpress essentials 
+    - creating an user in wordpress is somthing we need to know how to do.
+    `docker exec -it wordpress wp user create user1 user1@gmail.com \
+    --user_pass=user123 \
+    --role=author \
+    --allow-root`
+     - this is how to add an user in wordpress but while the container is runing if we want it to add it
+        with the container so we need to add it in the script of wordpress.
+        `--allow-root` this is just bypassing the wp-cli safty so telling it it's okay to run this command
+        as root.
+    `docker exec -it wordpress wp user list --allow-root` this command here is to liste the users.
+
 ## what is happenig
     The user sends a request to nginx over HTTPS.
     nginx handles SSL certificate and forwards the PHP request to
@@ -63,6 +75,7 @@
     PHP-FPM executes the wordpress PHP code.
     Wordpress interact with mariadb to recieve or store data.
     The response is sent back through PHP-FPM to nginx to the browser.
+
 ## Tools that is been used
     - I used PHP-FPM instead of APACHE because of esolation,
      APACHE handles HTTP and php together.
