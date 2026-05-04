@@ -2,6 +2,13 @@
 
 echo "Starting WordPress setup..."
 
+# Download WordPress files if empty (because bind mount wipes build files)
+if [ ! -f /var/www/html/wp-login.php ]; then
+    echo "Downloading WordPress..."
+    wp core download --path=/var/www/html --allow-root
+    chown -R www-data:www-data /var/www/html
+fi
+
 # Wait for MariaDB
 until mysql -h mariadb -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" -e "SELECT 1" > /dev/null 2>&1; do
     echo "Waiting for MariaDB..."

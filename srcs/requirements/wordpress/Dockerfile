@@ -1,7 +1,6 @@
 FROM debian:12
 
 RUN apt update && apt install -y \
-    wget \
     curl \
     php \
     php-fpm \
@@ -15,12 +14,6 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
     && mv wp-cli.phar /usr/local/bin/wp
 
 WORKDIR /var/www/html
-
-# Download WordPress
-RUN wget https://wordpress.org/latest.tar.gz && \
-    tar -xzf latest.tar.gz && \
-    mv wordpress/* . && \
-    rm -rf wordpress latest.tar.gz
 
 # PHP-FPM runtime dir 
 # php-fpm needs a folder wher to store it's runtime files.
