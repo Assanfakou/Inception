@@ -2,7 +2,7 @@
 
 echo "Starting WordPress setup..."
 
-# Download WordPress files if empty (because bind mount wipes build files)
+# Download WordPress files if empty
 if [ ! -f /var/www/html/wp-login.php ]; then
     echo "Downloading WordPress..."
     wp core download --path=/var/www/html --allow-root
