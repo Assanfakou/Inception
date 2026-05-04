@@ -26,19 +26,28 @@ if [ ! -f wp-config.php ]; then
         --dbname="$MYSQL_DATABASE" \
         --dbuser="$MYSQL_USER" \
         --dbpass="$MYSQL_PASSWORD" \
-        --dbhost="mariadb:3306" \
+        --dbhost="$DB_HOST" \
         --allow-root
 fi
 
 # Install WordPress if not installed
 if ! wp core is-installed --allow-root; then
-    echo "Installing WordPress..."
+    echo "Installing WordPress"
     wp core install \
-        --url="https://hfakou.42.fr" \
+        --url="$URL" \
         --title="Inception" \
         --admin_user="$WP_ADMIN_USER" \
         --admin_password="$WP_ADMIN_PASSWORD" \
         --admin_email="$WP_ADMIN_EMAIL" \
+        --allow-root
+fi
+
+# Create second user if not exists
+if ! wp user get "$WP_USER" --allow-root > /dev/null 2>&1; then
+    echo "---Creating another user---"
+    wp user create "$WP_USER" "$WP_USER_EMAIL" \
+        --user_pass="$WP_USER_PASSWORD" \
+        --role=author \
         --allow-root
 fi
 
