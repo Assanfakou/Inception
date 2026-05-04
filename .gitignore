@@ -1,7 +1,9 @@
-.env
+*.env
 file
 *test
 *testing
 .RE*
 .Docker*
 .do*
+*.swap
+*.swp
