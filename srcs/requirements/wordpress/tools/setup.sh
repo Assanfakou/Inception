@@ -51,6 +51,15 @@ if ! wp user get "$WP_USER" --allow-root > /dev/null 2>&1; then
         --allow-root
 fi
 
+# Install and configure Redis cache plugin
+if ! wp plugin is-installed redis-cache --allow-root; then
+    echo "Installing Redis cache plugin..."
+    wp plugin install redis-cache --activate --allow-root
+    wp config set WP_REDIS_HOST redis --allow-root
+    wp config set WP_REDIS_PORT 6379 --type=constant --allow-root
+    wp redis enable --allow-root
+fi
+
 echo "Starting PHP-FPM..."
 
 exec php-fpm8.2 -F

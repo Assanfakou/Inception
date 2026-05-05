@@ -41,6 +41,14 @@ services:
       - mariadb
     networks: 
       - inception
+  radis:
+    build: requirements/bonus/redis/
+    container_name: redis
+    restart: always
+    depends_on:
+      - wordpress
+    networks:
+      - inception
 
 volumes:
     mariadb-data:
