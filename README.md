@@ -85,3 +85,17 @@
     - wp-cli is used for automation wordpress instalation and avoid manual configuration.
     - PHP-FPM listens in port 9000 for FastCGI
  
+## redis
+    - Redis is a Remote dictionary server, it helps for the chaching of the content of the website,
+        Redis concept is store the structure in the memory instead of going to travel until
+        the disk, so it makes the data travel fast to the browser.
+    - Eveey cashed item has an expired time in the memory, that what means by TTL,
+        Time To live, and also Redis saves the cached data as paires KEY and VALUE.
+    - Redis runs in port 6379.
+    -- Commands helps
+        1- `redis-cli monitor` seing the redis command flying around 
+            as the wordpress reads or writes to the cache.
+        2- `redis-cli keys "*"` to display the keys available in the cashed memory, 
+            or redis cashed memory.
+        3- `docker exec -it wordpress wp redis status --allow-root` this is useful to see the
+            status information in wordpress container.
