@@ -15,6 +15,5 @@ COPY conf/nginx.conf /etc/nginx/nginx.conf
 RUN mkdir -p /var/www/static
 
 COPY www/index.html /var/www/static/index.html
-COPY www/style.css /var/www/static/style.css
 
 CMD ["nginx", "-g", "daemon off;"]
