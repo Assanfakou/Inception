@@ -7,7 +7,7 @@ down:
 
 clean:
 	docker compose -f srcs/docker-compose.yaml down -v
-	sudo rm -rf /home/hfakou/data/mariadb/* /home/hfakou/data/wordpress/*
+	sudo rm -rf /home/hfakou/data/mariadb/* /home/hfakou/data/wordpress/* /home/hfakou/data/portainer/*
 
 fclean: clean
 	docker system prune -af
