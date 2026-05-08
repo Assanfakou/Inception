@@ -1,4 +1,5 @@
 ### PHP-FPM FastCGI Process Management
+
     Php-FPM is an implementaion conaining some feauturs useful for heavy-loaded sites;
         1- advanced process managemnent with stop/start.
         2- configure the stdout or stderr of the loggin.
@@ -36,11 +37,11 @@
     nginx must start automatically.
     4- `-days 333` certificate is valid for this period.
     5-`newkey rsa:2048` creat new key pair private and public.
-        rsa ; encryption strength.
+       `rsa :` encryption strength.
     6-`keyout` save private key in path used by nginx to dycrypt the traffic.
     7-`out` save the certificate in path.
     8-`subj` identity info inside the certificate .
-    so nginx used this certificate to enable HTTPS.
+        so nginx used this certificate to enable HTTPS.
 
 
 ## nginx config file synthax
@@ -54,6 +55,12 @@
               support some older browsers.
               `TLSv1.3` the handshake is faster and takes only one round.
                 encrypt the handshake itself .considered the gold standard today.
+      `fastcgi_pass:container_name:portnumber`
+        - This is a Network proxy, and this tells nginx, i don't know how to run this,
+            so send it to this container in that specific portnumber.
+      -`SCRIPT_FILENAME /var/www/html/adminer.php` this tells to the adminer run this file.
+      -`~ \.php$` this is regix expression catches every file ending with .php.
+      -`$document_root$fastcgi_script_name;` this build the full path so php knows exactely what files to run.
 
 
 ## wordpress essentials 
@@ -79,14 +86,14 @@
 ## Tools that is been used
     - I used PHP-FPM instead of APACHE because of esolation,
      APACHE handles HTTP and php together.
-    - volumes used to store data even when the container is topped or rebuilded
+    - volumes used to store data even when the container is stopped or rebuilded
     the data is still there outside the container.
     - docker networking allows container to communicate by contianer names not ip's.
     - wp-cli is used for automation wordpress instalation and avoid manual configuration.
     - PHP-FPM listens in port 9000 for FastCGI
  
 ## redis
-    - Redis is a Remote dictionary server, it helps for the chaching of the content of the website,
+    - Redis is a Remote dictionary server, it helps for the caching of the content of the website,
         Redis concept is store the structure in the memory instead of going to travel until
         the disk, so it makes the data travel fast to the browser.
     - Eveey cashed item has an expired time in the memory, that what means by TTL,
