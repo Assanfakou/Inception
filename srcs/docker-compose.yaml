@@ -62,7 +62,7 @@ services:
     networks:
       - inception
   portainer:
-    image: portainer/portainer-ce:latest
+    build: requirements/bonus/portainer/
     container_name: portainer
     restart: always
     ports:
