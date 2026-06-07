@@ -33,6 +33,14 @@ services:
       - wordpress-data:/var/www/html
     networks:
       - inception
+  static:
+    build: requirements/static/
+    container_name: static
+    restart: always
+    depends_on:
+      - nginx
+    network:
+      - inception 
   adminer:
     build: requirements/bonus/adminer/
     container_name: adminer
