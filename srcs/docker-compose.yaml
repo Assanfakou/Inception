@@ -39,7 +39,7 @@ services:
     restart: always
     depends_on:
       - nginx
-    network:
+    networks:
       - inception 
   adminer:
     build: requirements/bonus/adminer/
@@ -87,18 +87,18 @@ volumes:
       driver_opts:
         type: non
         o: bind
-        device: /home/hfakou/data/mariadb
+        device: /home/vboxuser/data/mariadb
     wordpress-data:
       driver: local
       driver_opts:
         type: non
         o: bind
-        device: /home/hfakou/data/wordpress
+        device: /home/vboxuser/data/wordpress
     portainer_data:
       driver: local
       driver_opts:
         type: none
         o: bind
-        device: /home/hfakou/data/portainer
+        device: /home/vboxuser/data/portainer
 networks:
   inception:
